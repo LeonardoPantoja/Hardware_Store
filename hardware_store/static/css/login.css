@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+.login {
+  width: 500px;
+  padding: 10% 0 0;
+  margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    max-width: 80%;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+.form input {
+    font-family: "Lato", sans-serif;
+    color: #000000;
+    outline: 0;
+    background: #f1f3f5;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+.form button {
+    font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #f7b43d;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+
+.form button:hover,.form button:active,.form button:focus {
+    background: #e08e00;
+  }
+
+.form .alternate {
+    margin: 20px 0 0;
+    font-size: 16px;
+  }
+
+.form .registration-form {
+    display: contents ;
+  }
+
+body {
+    background-color: #f7f7f7; 
+    font-family: "Lato", sans-serif;
+  } 
+
+.form .principal a{
+  font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #f7b43d;
+    border: 0;
+    padding: 5px;
+    padding-left: 40%;
+    padding-right: 40%;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+
+.form .principal a:hover{
+  background: #e08e00;
+}
+
+.form .secondary a{
+  font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #f7b43d;
+    border: 0;
+    padding: 5px;
+    padding-left: 42%;
+    padding-right: 42%;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+} 
+
+.form .secondary a:hover{
+  background: #e08e00;
+}

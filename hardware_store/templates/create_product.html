@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/create_cat.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
+<div>
+    <h1 style="color: black;">Make New Product</h1>
+</div>
+<div class ="card" style="background-color: #ffffff;">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" value="Submit" class="btn btn-delete">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

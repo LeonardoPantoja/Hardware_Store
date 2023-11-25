@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+<body style="background-color: #ffffff;">
+    <div class="login">
+        <div class="form">
+            <h2>Log in</h2>
+            <form class="login-form" method="POST">
+                <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <main class="mt-5 pt-4">
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height: 90vh;">
+                <div class="col-md-10 col-lg-8">
+                    <form class="card card-form p-4" method="post" id="payment-form">
+                        {% csrf_token %}
+                        <h2 class="mb-4 text-center">Pedido</h2>
+
+                        <!-- Campos existentes -->
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstName">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastName">Apellido</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <!-- Información de tarjeta -->
+                        <div class="form-row mb-3">
+                            <div class="col-md-12">
+                                <label for="card-element" class="form-label">Información de Tarjeta</label>
+                                <div id="card-element" class="form-control"></div>
+                                <div id="card-errors" role="alert"></div>
+                            </div>
+                        </div>
+
+                        <!-- Total del Pedido -->
+                        <div class="form-row mb-3">
+                            <div class="col-md-12">
+                                {% if total_carrito %}
+                                    <p class="form-label">Total del Pedido: ${{ total_carrito|floatformat:2 }}</p>
+                                {% else %}
+                                    <p class="form-label">Error al obtener el total del carrito.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Botón de pedido -->
+                        <div class="form-row mb-3">
+                            <div class="col-md-12">
+                                <button id="button" class="btn btn-cart" type="submit" data-bs-toggle="modal">
+                                    <i class="far fa-envelope"></i> Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        var stripe = Stripe('pk_test_51OG73FIrydiWNqtY1zTDNO7mPw6GzitW8DclBtrCOGqU6zeRXZEzEqPWQI2Ab9lvbGzNGWPq8IO7FNtUHPIZa1iS00Anr9cDiN');
+        var elements = stripe.elements();
+
+        var style = {
+            base: {
+                color: '#32325d',
+                fontFamily: 'Arial, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4',
+                },
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a',
+            },
+        };
+
+        var card = elements.create('card', { style: style });
+        card.mount('#card-element');
+
+        card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    var tokenInput = document.createElement('input');
+                    tokenInput.type = 'hidden';
+                    tokenInput.name = 'stripe_token';
+                    tokenInput.value = result.token.id;
+                    form.appendChild(tokenInput);
+
+                    form.submit();
+                }
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var submitBtn = document.getElementById('submitBtn');
+            var formInputs = document.querySelectorAll('#firstName, #lastName, #address, #phone, #time');
+
+            function updateSubmitButton() {
+                var isFormValid = true;
+                formInputs.forEach(function (input) {
+                    if (!input.checkValidity()) {
+                        isFormValid = false;
+                    }
+                });
+
+                submitBtn.disabled = !isFormValid;
+            }
+
+            formInputs.forEach(function (input) {
+                input.addEventListener('input', updateSubmitButton);
+            });
+
+            updateSubmitButton();
+        });
+    </script>
+
+    <!-- Agregué Bootstrap para estilos adicionales -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% endblock %}

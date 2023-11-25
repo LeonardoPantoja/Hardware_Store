@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form_edit.css' %}">
+
+<div class="card-body">
+    <div>
+        <form method="POST">
+            <div class="modal-body" style="margin: 3rem;">
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+            </div>
+
+            <div class="d-flex">
+                <div class="mr-auto p-2">
+                    <a type="button" class="btn btn-secondary"
+                       href="/category_list">
+                        Close
+                    </a>
+                    <button type="submit" class="btn btn-normal">
+                        Update Now
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+ </div>
+
+{% endblock %}

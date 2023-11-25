@@ -1,0 +1,63 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
+
+<div class="container mt-5">
+    <div class="card text-center">
+        <div class="card-header" style="background-color: #03103a; color: #ffffff;">
+            Categorías
+        </div>
+        <div class="card-body" style="background-color: #f1f3f5;">
+            <h5 class="card-title">Lista de categorías</h5>
+            <p class="card-text">Para ver los productos en una categoría, haz clic en el nombre.</p>
+
+            <div class="table-responsive">
+                <table class="table table-hover mx-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            {% if user.is_authenticated %}
+                                <th scope="col">Acciones</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in category %}
+                            <tr class="pointer">
+                                <td>{{ category.id }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-normal btn-sm" onclick="productCategory({{ category.id }})">
+                                        {{ category.name }}
+                                    </button>
+                                </td>
+                                <td>{{ category.description }}</td>
+                                <td class="d-flex justify-content-between">
+                                    {% if user.is_authenticated %}
+                                        {% if user.is_staff %}
+                                            <button type="button" class="btn btn-normal btn-sm" onclick="editCategory({{ category.id }})">
+                                                Editar
+                                            </button>
+                                            <button type="button" class="btn btn-delete btn-sm" onclick="deleteCategory({{ category.id }})">
+                                                Borrar
+                                            </button>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if user.is_authenticated and user.is_staff %}
+                <a href="{% url 'create-category' %}" class="btn btn-delete">Añadir una nueva categoría</a>
+                <a href="{% url 'create-product' %}" class="btn btn-delete">Añadir un nuevo producto</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

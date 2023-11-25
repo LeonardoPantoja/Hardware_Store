@@ -1,0 +1,102 @@
+.order-2 {
+    margin-top: 2r0em;
+}
+
+body {
+    margin-top: 5rem;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.card {
+    background-color: #f1f3f5;
+    width: 80%; 
+    margin-left: 21%;
+}
+
+button {
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+}
+
+.list_box {
+    border-style: solid;
+    border-radius: 10px;
+    width: 16.75%;
+    position: absolute;
+    margin-bottom: 20rem;
+    background-color: #f1f3f5;
+    overflow: auto;
+    padding: 0rem;
+}
+
+.list_box li {
+    list-style: none;
+    color: #db8b00;
+    margin-bottom: .75rem;
+    margin-top: .75rem;
+    padding-left: .75rem;
+}
+
+
+.list_box h1 {
+    text-align: center;
+    background-color: #03103a;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 100%;
+    border-bottom-style: solid;
+}
+
+.list_box li:hover {
+    color: #f7b43d;
+    cursor: pointer;
+}
+
+.h1-head{
+    margin-left: 30%; 
+    margin-right: 30%;
+    text-align: center;
+    font-size: 5rem;
+    width: 60%;
+}
+
+.pagination {
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.pagination .page-link {
+    background-color: #37475a;
+    color: #ffffff;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #252f40;
+    color: #ffffff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #252f40;
+    border: 1px solid #252f40;
+}
+
+
+
+
+.container-fluid a{
+
+    justify-content: center;
+    margin: 1rem auto;
+    max-width: 100%;
+    text-align: center;
+    margin-left: 54%; 
+    margin-right: 30%;
+}
