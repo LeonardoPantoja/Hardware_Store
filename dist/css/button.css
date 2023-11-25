@@ -1,0 +1,67 @@
+.btn-normal{
+    background-color: #5e548e;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+}
+
+.btn-normal:hover{
+    background-color: #231942;
+    color: #fff;
+}
+
+.btn-delete{
+    background-color: #8380b6;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.btn-delete:hover{
+    background-color: #8789c0;
+    color: rgb(255, 255, 255);
+}
+
+.btn-danger.btn-sm {
+    padding: 0.2rem 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.btn-payment {
+    background-color: #252f40;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+}
+
+.btn-payment:hover {
+    background-color: #37475a;
+    color: #ffffff;
+}
+
+.btn-cart{
+    background-color: #252f40;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.btn-cart:hover{
+    background-color: #37475a;
+    color: rgb(255, 255, 255);
+}
