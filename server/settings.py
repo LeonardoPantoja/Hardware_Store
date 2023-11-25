@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$0#i%s9w-(+rh%fnr!7w4-fue^l=l6_v1q+vsd-niq)$)yk68m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -129,18 +129,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-#AWS
-AWS_ACCESS_KEY_ID = 'AKIASU5DSGNMUHDS7JPS'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'django-hardware-store-bucket'
-AWS_S3_SIGNATURE_NAME = 's3v4',
-AWS_S3_REGION_NAME = 'us-east-2'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
